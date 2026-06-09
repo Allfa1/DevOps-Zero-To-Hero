@@ -1,0 +1,19 @@
+name: Core Basics Pipeline Run
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  run-compilation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fetch Local Repository Files
+        uses: actions/checkout@v4
+
+      - name: Compile C Code with Standard GCC
+        run: gcc hello.c -o my_cloud_binary
+
+      - name: Execute Binary Integrity Test
+        run: ./my_cloud_binary
